@@ -7,7 +7,7 @@ import os
 import epd
 
 if __name__ == '__main__':                                                            
-    city = '石家庄'
+    city = '吴桥'
     w = weather.Weather(city)
     weather_now = w.get_weather_text_now()
     temp = w.get_temp_now()
@@ -17,7 +17,7 @@ if __name__ == '__main__':
     if int(temp) < 10:
         TEXT = "当前气温较低，请注意保暖，出门记得穿厚点哦！"
     else:
-        TEXT = weather_now
+        TEXT = "今天天气" + weather_now + "，气温" + temp + "摄氏度" + "，空气质量" + aqi
     v = voice.Voice(TEXT) 
     v.textToVoice()
     print(weather_now)
@@ -29,5 +29,5 @@ if __name__ == '__main__':
             temp,
             ]
     mail.send_mail(mail_content)
-    e = epd.Epd()
-    e.display(city=city, weather=weather_now, temp=temp, aqi=aqi)
+    #e = epd.Epd()
+    #e.display(city=city, weather=weather_now, temp=temp, aqi=aqi)
