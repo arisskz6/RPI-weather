@@ -15,7 +15,7 @@ import traceback
 
 class Epd:
 
-    def display(self, city, weather, temp, aqi):
+    def display(self, city, weather, temp, aqi, icon):
         logging.basicConfig(level=logging.DEBUG)
     
         try:
@@ -32,7 +32,7 @@ class Epd:
         
             HBlackimage = Image.new('1', (epd.height, epd.width), 255)  # 298*126
             HRYimage = Image.new('1', (epd.height, epd.width), 255)  # 298*126  ryimage: red or yellow image  
-            wimage = Image.open(os.path.join(picdir, '101.bmp'))  
+            wimage = Image.open(os.path.join(picdir, icon+'.bmp'))  
             HBlackimage.paste(wimage, (20,5))    
             drawblack = ImageDraw.Draw(HBlackimage)
             text1 = '今日天气'

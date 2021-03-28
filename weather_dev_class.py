@@ -86,6 +86,14 @@ class Weather:
             w_data = self.get_weather_data('now')
         return w_data['now']['text']
         
+    # 获取天气图标代码
+    def get_weather_icon(self, usedb=False):
+        if usedb is True:
+            w_data = self.use_weather_data()
+        else:
+            w_data = self.get_weather_data('now')
+        return w_data['now']['icon']
+
     # 获取实时风向
     def get_wind_direction_now(self, usedb=False):
         if usedb is True:
@@ -110,7 +118,9 @@ if __name__ == '__main__':
 
     w_data = w.get_weather_data('now')
     # 保存天气数据
-    print(len(w_data))
+    print(w_data)
+    icon = w.get_weather_icon()
+    print('icon:' + icon) 
     #w.save_weather_data(w_data)
     #print('城市: ' + city)
     #print('天气: ' + w.get_weather_text_now(usedb=True))
