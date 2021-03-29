@@ -123,4 +123,4 @@ class Epd:
     
 if __name__ == '__main__':
     e = Epd()
-    e.display(city='石家庄', weather='多云', temp=25, aqi='优')
+    e.display(city='石家庄', weather='多云', temp=25, aqi='优', icon='100')
