@@ -12,5 +12,5 @@ class Wechat():
 
 
 if __name__ == '__main__':
-    w = Wechat('测试')
+    w = Wechat('石家庄天气晴，气温25℃C，空气质量轻度污染')
     w.wechat_send()
