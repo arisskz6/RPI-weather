@@ -13,12 +13,11 @@ def send_mail(contents):
 
 
 
-weather = '晴天'
-mail = [
-        '主人',
-    '今天的天气是', 
-    weather
-]
 
 if __name__ == '__main__':
+    mail = [
+            "<h1 style='color:red'>石家庄3月天气图</h1>",#可以是html语言
+            yagmail.inline('draw_3month.png'),# 这样的话,图片会内嵌到正文
+            '早日证得涅槃', #可以是普通文本
+            ]
     send_mail(mail)
