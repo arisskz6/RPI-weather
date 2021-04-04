@@ -7,7 +7,7 @@ import os
 import epd
 
 if __name__ == '__main__':                                                            
-    city = '西双版纳'
+    city = '石家庄'
     w = weather.Weather(city)
     weather_now = w.get_weather_text_now()
     temp = w.get_temp_now()
