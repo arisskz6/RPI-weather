@@ -1,8 +1,15 @@
 import yagmail
 
 def send_mail(contents):
-    yag = yagmail.SMTP('tianzk404@163.com', 'GDOVEFKHUUZVONUB', host='smtp.163.com', port='465')
-    yag.send('3226177006@qq.com', '智能天气小助手', contents)
+    sender = 'tianzk404@163.com'
+    reciver = '3226177006@qq.com'
+    password = 'GDOVEFKHUUZVONUB'
+    host = 'smtp.163.com'
+    port = '465'
+
+    yag = yagmail.SMTP(sender, password, host, port)
+    subject = '树莓派智能天气提醒'
+    yag.send(reciver, subject, contents)
 
 
 
