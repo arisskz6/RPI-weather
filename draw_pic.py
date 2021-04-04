@@ -39,4 +39,4 @@ plt.xticks(dates[::1])  # 由于数据不多，将每天的数据全部显示出
 # 显示折线图
 #plt.show()
 # 保存折线图
-plt.savefig()
+plt.savefig('test_draw.png')
