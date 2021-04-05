@@ -32,11 +32,11 @@ def get_data(url):
     _data['气温'] = temp
     return _data
 
-# 爬取目标网页（石家庄市2021年3月份天气[网站：天气后报]）
-data_2_month = get_data('http://www.tianqihoubao.com/lishi/shijiazhuang/month/202103.html')
+# 爬取目标网页（石家庄市2021年4月份天气[网站：天气后报]）
+data_4_month = get_data('http://www.tianqihoubao.com/lishi/shijiazhuang/month/202104.html')
 
 # 拼接所有表并重新设置行索引（若不进行此步操作，可能或出现多个标签相同的值）
-data = pd.concat([data_2_month]).reset_index(drop = True)
+data = pd.concat([data_4_month]).reset_index(drop = True)
 
 # 将 _data 表以 .csv 格式存入指定文件夹中，并设置转码格式防止乱花（注：此转码格式可与 HTML 二进制转字符串的转码格式不同）
-data.to_csv('Shijiazhuang3Mouth.csv',encoding='utf-8')
+data.to_csv('Shijiazhuang4Mouth.csv',encoding='utf-8')
