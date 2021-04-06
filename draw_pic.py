@@ -41,6 +41,6 @@ plt.tick_params(axis='both',which='major',labelsize=10)
 plt.xticks(dates[::1])  # 由于数据不多，将每天的数据全部显示出来
 
 # 显示折线图
-plt.show()
+#plt.show()
 # 保存折线图
-plt.savefig('draw_3month.png')
+plt.savefig('draw_4month.png')
