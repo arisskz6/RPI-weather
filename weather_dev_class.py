@@ -114,6 +114,7 @@ class Weather:
 
 if __name__ == '__main__':
     city = input('请输入您要查询天气的城市: ')
+    #city = '石家庄'
     w = Weather(city)
 
     w_data = w.get_weather_data('now')
