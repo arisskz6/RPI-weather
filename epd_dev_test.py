@@ -14,7 +14,8 @@ import traceback
 
 class Epd:
 
-    def display(self, city, weather, temp, aqi, icon):
+    #def display(self, city, weather, temp, aqi, icon, wind_dir, wind_scale):
+    def display(self, city, weather, temp, aqi, icon, wind_dir, wind_scale):
         try:
             epd = epd2in9b_V3.EPD()
             epd.init()
@@ -34,6 +35,7 @@ class Epd:
             drawblack.text((120, 20), text1+weather, font = font, fill = 0)
             drawblack.text((120, 45), text2, font = font, fill = 0)
             drawblack.text((120, 70), '空气质量'+aqi, font = font, fill = 0)
+            drawblack.text((120, 95), wind_dir+wind_scale+'级', font = font, fill = 0)
             print("正在绘制中...")
             epd.display(epd.getbuffer(HBlackimage), epd.getbuffer(HRYimage))
             time.sleep(2)
@@ -49,4 +51,4 @@ class Epd:
     
 if __name__ == '__main__':
     e = Epd()
-    e.display(city='沧州', weather='多云', temp=25, aqi='优', icon='100')
+    e.display(city='沧州', weather='多云', temp=25, aqi='优', icon='100', wind_dir='东北风', wind_scale='4')

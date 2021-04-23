@@ -126,8 +126,8 @@ if __name__ == '__main__':
     #print('城市: ' + city)
     #print('天气: ' + w.get_weather_text_now(usedb=True))
     #print('温度: ' + w.get_temp_now(usedb=True))
-    #print('风向: ' + w.get_wind_direction_now(usedb=True))
-    #print('风力: ' + w.get_wind_scale_now(usedb=True) + '级')
+    print('风向: ' + w.get_wind_direction_now(usedb=True))
+    print('风力: ' + w.get_wind_scale_now(usedb=True) + '级')
     #print('空气质量: ' + w.get_aqi_text_now())
 
     #w_data = w.get_weather_data('24h')

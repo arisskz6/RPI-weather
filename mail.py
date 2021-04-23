@@ -12,7 +12,7 @@ class Mail():
         port = '465'
     
         yag = yagmail.SMTP(sender, password, host, port)
-        subject = 'arisskz6'
+        subject = '树莓派天气小助手'
         yag.send(reciver, subject, self.contents)
 
 
@@ -20,7 +20,7 @@ class Mail():
 
 if __name__ == '__main__':
     mail = [
-            "树莓派智能天气提醒",
+            "西双版纳天气晴，气温33摄氏度，空气质量优",
             ]
     m = Mail(mail)
     m.send()
