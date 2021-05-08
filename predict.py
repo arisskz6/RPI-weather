@@ -44,16 +44,11 @@ class Predict():
         model = LinearRegression()
         # 根据训练数据拟合出直线(以得到假设函数)
         hypothesis = model.fit(xTrain, yTrain)
-        # 截距
-        #print("theta0=", hypothesis.intercept_)
-        # 斜率
-        #print("theta1=", hypothesis.coef_)
-        
         # 预测明天最高气温
         next_day = day + 1
         print(f"预测{today.year}年{today.month}月{next_day}日的最高气温：", model.predict([[next_day]]))
         # 也可以批量预测多个日期的气温，注意要以列向量形式表达（有余数据集量少，故间隔时间长气温可能有较大差异）
-        # 此处仅利用模型表示，不代表真实值（假设要预测未来三天的天气）
+        # 预测未来三天的天气）
         day1 = day + 1
         day2 = day + 2
         day3 = day + 3
@@ -80,6 +75,8 @@ class Predict():
         plt.plot(xNew, yNew, 'g--')
         # 保存图片
         plt.savefig('predict.png', dpi=199)
+
+        return xNew, yNew
 
 
 if __name__ == '__main__':

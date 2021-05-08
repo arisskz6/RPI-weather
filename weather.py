@@ -6,7 +6,7 @@ import simplejson as json
 import shelve
 
 class Weather:
-    KEY = "cd333976c10a4316b0a9d3d8735a2f74"
+    KEY = "13e58f9415d04059b86174634fee6adc"
     API_BASE = 'https://devapi.qweather.com/v7/weather/'
     
     def __init__(self, city):
@@ -15,9 +15,9 @@ class Weather:
     # 获取城市ID
     def get_location_id(self, adm=None):
         if adm is not None:
-            res = requests.get(f'https://geoapi.qweather.com/v2/city/lookup?location={self.city}&key=6a6c04efa72d4fb9ae6f0651098e5181&adm={adm}&range=cn')
+            res = requests.get(f'https://geoapi.qweather.com/v2/city/lookup?location={self.city}&key={Weather.KEY}&adm={adm}&range=cn')
         else:
-            res = requests.get(f'https://geoapi.qweather.com/v2/city/lookup?location={self.city}&key=6a6c04efa72d4fb9ae6f0651098e5181&range=cn')
+            res = requests.get(f'https://geoapi.qweather.com/v2/city/lookup?location={self.city}&key={Weather.KEY}&range=cn')
         loc_data = json.loads(res.text)
         city_id = loc_data['location'][0]['id']
         return city_id
@@ -60,7 +60,7 @@ class Weather:
     # 获取空气质量原始数据
     def get_aqi_data_now(self):
         location_id = self.get_location_id()
-        url = f'https://devapi.qweather.com/v7/air/now?location={location_id}&key=cd333976c10a4316b0a9d3d8735a2f74'
+        url = f'https://devapi.qweather.com/v7/air/now?location={location_id}&key={Weather.KEY}'
         res = requests.get(url)
         pydic_data = json.loads(res.text)
         return pydic_data
@@ -113,21 +113,23 @@ class Weather:
 
 
 if __name__ == '__main__':
-    city = input('请输入您要查询天气的城市: ')
-    #city = '石家庄'
+    #city = input('请输入您要查询天气的城市: ')
+    city = '石家庄'
     w = Weather(city)
+    city_id = w.get_location_id()
+    print(f'{city} : {city_id}')
 
     w_data = w.get_weather_data('now')
     # 保存天气数据
     print(w_data)
-    icon = w.get_weather_icon()
-    print('icon:' + icon) 
+    #icon = w.get_weather_icon()
+    #print('icon:' + icon) 
     #w.save_weather_data(w_data)
     #print('城市: ' + city)
     #print('天气: ' + w.get_weather_text_now(usedb=True))
     #print('温度: ' + w.get_temp_now(usedb=True))
-    print('风向: ' + w.get_wind_direction_now(usedb=True))
-    print('风力: ' + w.get_wind_scale_now(usedb=True) + '级')
+    #print('风向: ' + w.get_wind_direction_now(usedb=True))
+    #print('风力: ' + w.get_wind_scale_now(usedb=True) + '级')
     #print('空气质量: ' + w.get_aqi_text_now())
 
     #w_data = w.get_weather_data('24h')

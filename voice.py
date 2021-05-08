@@ -47,7 +47,7 @@ class Voice():
                     "lan":"zh", #固定值zh。语言选择,目前只有中英文混合模式，填写固定值zh
                     "spd":4, #语速，取值0-15，默认为5中语速
                     "pit":10, #音调，取值0-15，默认为5中语调
-                    "vol":1, #音量，取值0-15，默认为5中音量
+                    "vol":5, #音量，取值0-15，默认为5中音量
                     "per":0, #基础语音库，度小宇=1，度小美=0，度逍遥（基础）=3，度丫丫=4
                     "aue":3, #3为mp3格式(默认)； 4为pcm-16k；5为pcm-8k；6为wav（内容同pcm-16k）
                }
@@ -57,8 +57,11 @@ class Voice():
             with open('result.mp3', 'wb') as f:
                 f.write(res.content)
 
-    def play(self):
-        os.system('mpg123 result.mp3')
+    def play(self, flag=True):
+        if flag is True:
+            os.system('mpg123 result.mp3')
+        else:
+            os.system('mpg123 net_error.mp3')
 
 
 #text_to_voice('百度你好')
