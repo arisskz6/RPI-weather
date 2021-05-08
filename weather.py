@@ -110,6 +110,14 @@ class Weather:
             w_data = self.get_weather_data('now')
         return w_data['now']['windScale']
 
+    # 获取生活建议
+    def get_advice(self):
+        city_id = self.get_location_id()
+        url = f'https://devapi.qweather.com/v7/indices/1d?location={city_id}&key={Weather.KEY}&type=8'
+        res = requests.get(url)
+        pydic_data = json.loads(res.text)
+        return pydic_data['daily'][0]['text']
+
 
 
 if __name__ == '__main__':
@@ -121,7 +129,8 @@ if __name__ == '__main__':
 
     w_data = w.get_weather_data('now')
     # 保存天气数据
-    print(w_data)
+    #print(w_data)
+    print(w.get_advice())
     #icon = w.get_weather_icon()
     #print('icon:' + icon) 
     #w.save_weather_data(w_data)

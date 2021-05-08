@@ -22,13 +22,16 @@ def rpi_weather():
         icon = w.get_weather_icon()
         wind_dir = w.get_wind_direction_now()
         wind_scale = w.get_wind_scale_now()
+        advice = w.get_advice()
     
+        info_base = f'树莓派智能天气提醒您：今天{city}天气{weather_now}，气温{temp}摄氏度，空气质量{aqi}，{wind_dir}{wind_scale}级。'
+
         if weather_now == '晴':
-            TEXT = "现在的天气是晴天哦，真棒！"
+            TEXT = f'{info_base}现在的天气是晴天哦，真棒！{advice}'
         if int(temp) < 10:
-            TEXT = "当前气温较低，请注意保暖，出门记得穿厚点哦！"
+            TEXT = f'{info_base}当前气温较低，请注意保暖，出门记得穿厚点哦！{advice}'
         else:
-            TEXT = f'树莓派智能天气提醒您：今天{city}天气{weather_now}，气温{temp}摄氏度，空气质量{aqi}，{wind_dir}{wind_scale}级'
+            TEXT = f'{info_base}{advice}'
     
         v = voice.Voice(TEXT) 
         v.text_to_voice()
